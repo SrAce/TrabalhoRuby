@@ -1,3 +1,5 @@
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Waterbills</h1>
@@ -9,6 +11,8 @@
       <th>Month</th>
       <th>Year</th>
       <th>Consuption</th>
+      <th>Price</th>
+      <th>Label</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +24,12 @@
         <td><%= waterbill.month %></td>
         <td><%= waterbill.year %></td>
         <td><%= waterbill.consuption %></td>
-        <td><%= link_to 'Show', waterbill %></td>
+        <td><%= teste(waterbill.consuption) %></td>
+        <td>
+          <%= "normal" if waterbill.consuption < 10 %>
+          <%= "overuse" if waterbill.consuption < 30 %>
+          <%= "excessive" if waterbill.consuption > 30%>
+        </td>
         <td><%= link_to 'Edit', edit_waterbill_path(waterbill) %></td>
         <td><%= link_to 'Destroy', waterbill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
